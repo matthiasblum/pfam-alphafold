@@ -15,4 +15,4 @@ ENV FLASK_DATABASE="/app/pfam-alphafold/data/demo.db"
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-b", "127.0.0.1:8000", "-w", "4", "pfam_alphafold.web:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "-w", "4", "pfam_alphafold.web:app"]
