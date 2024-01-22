@@ -128,5 +128,23 @@ This project includes data for a demo database (~800k proteins from key species 
 Re-create the database with the following command:
 
 ```shell
-gunzip -c data/demo.sql.gz | sqlite3 data/demo.db
+$ gunzip -c data/demo.sql.gz | sqlite3 data/demo.db
 ```
+
+### Docker image
+
+Alternatively, the web application with the demo database can be run using Docker.
+
+To build the image, run:
+
+```shell
+$ docker build -t pfam-alphafold .
+```
+
+Once the image is built, you can run the container:
+
+```shell
+$ docker run --rm -p 8000:8000 pfam-alphafold
+```
+
+Now, the web application should be accessible at http://localhost:8000/.
