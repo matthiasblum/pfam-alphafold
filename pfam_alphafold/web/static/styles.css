@@ -1,0 +1,207 @@
+body {
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #3498DB;
+    color: #FFF;
+    padding: 1em 0;
+}
+
+header > *:first-child {
+    margin-top: 0;
+}
+
+header > *:last-child{
+    margin-bottom: 0;
+}
+
+header a, header a:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 0 2em;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+.sub-header { font-size: .7em; color: rgba(0,0,0,.6); }
+
+a { color: #0089c7; }
+a:hover{ text-decoration: underline; }
+
+.header {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+table > thead > tr > th {
+    text-align: center !important;
+}
+
+.histobar {
+    height: 15px;
+    width: 202px;
+    display: inline-flex;
+    margin: .5em 0;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+.histobar > * {
+    position: relative;
+}
+
+svg.hist {
+    border: 1px solid #ccc;
+    vertical-align: middle;
+}
+
+.row > .col:first-child {
+    padding-left: 0;
+}
+.row > .col:last-child {
+    padding-right: 0;
+}
+
+#molstar {
+    position: relative;
+    width: 800px;
+    height: 600px;
+}
+
+#domains svg g[data-id] > rect {
+    opacity: 0.7;
+}
+#domains svg g[data-id]:hover {
+    cursor: pointer;
+}
+#domains svg g[data-id]:hover > rect {
+    opacity: 1;
+}
+#domains svg g[data-id] > text {
+    user-select: none;
+    cursor: inherit;
+}
+
+#tooltip {
+    z-index: 10000;
+    position: absolute;
+    width: 350px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#tooltip .header {
+    background-color: #546e7a;
+    color: #fff;
+    padding: .25em .5em;
+}
+
+#tooltip .content {
+    background-color: #fff;
+    color: inherit;
+    padding: .5em;
+}
+
+#tooltip .content .row {
+    margin: 0;
+}
+
+abbr[title] {
+    text-decoration: none;
+}
+
+abbr[title]::after {
+    content: "i";
+    padding-inline-start: .1rem;
+    font-size: .75rem;
+    font-weight: inherit;
+    position: relative;
+    vertical-align: super;
+}
+
+form > label:first-child {
+    font-weight: bold;
+    font-size: inherit;
+    margin-bottom: 0.5rem;
+}
+
+form > label + label {
+    margin-left: 1rem;
+}
+form > .help {
+    display: block;
+    color: rgba(0,0,0,.4);
+}
+
+/* Override Materialize */
+label { color: inherit; }
+[type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::after {
+  background-color: #3498DB;
+}
+[type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::before, [type="radio"].with-gap:checked + span::after {
+  border: 2px solid #3498DB;
+}
+
+/* Enable onClick for HighChart+Boots */
+.highcharts-tracker{
+    fill: red;
+    cursor: pointer;
+}
+
+/* Collapsed cell */
+table td {
+    width: auto;
+}
+table td.collapse {
+    width: 1%;;
+    white-space: nowrap;
+}
+
+/* Better loader */
+div.dataTables_processing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.85);
+    z-index: 1000;
+}
+div.dataTables_processing > div:last-child {
+    top: 50%;
+}
+
+form {
+    margin-bottom: 1rem;
+}
+
+.range-field {
+    max-width: 350px;
+}
+
+code {
+    background-color: rgba(29, 28, 29, 0.04);
+    border: 1px solid rgba(29, 28, 29, 0.13);;
+    border-radius: 3px;
+    color: rgb(224, 30, 90);
+    padding: 2px 3px;
+    font-size: inherit;
+}
+
+[data-taxon-id] > .card-title > p {
+    font-size: 4rem;
+    margin-bottom: .5rem;
+}
+[data-taxon-id] > .card-title > span {
+    font-size: 1.15rem;
+}

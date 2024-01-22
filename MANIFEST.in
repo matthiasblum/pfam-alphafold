@@ -1,0 +1,2 @@
+recursive-include pfam_alphafold/web/static *
+recursive-include pfam_alphafold/web/templates *

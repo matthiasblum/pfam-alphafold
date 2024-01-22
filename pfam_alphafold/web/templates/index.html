@@ -1,0 +1,256 @@
+{% extends "default.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="//ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css">
+    <style>
+        #species-cards .card .card-content {
+            padding: 24px 12px;
+        }
+        #species-cards .card .card-title {
+            font-size: 20px;
+        }
+        #species-cards .card .card-title i {
+            font-size: 40px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h2 class="header">
+        AlphaFold distribution
+        <div class="sub-header"></div>
+    </h2>
+    <p>
+        Histogram of mean pLDDT scores.
+        Click on a bar to list structure predictions with their mean pLDDT score in this window.
+    </p>
+    <form>
+        <label>Sequence status</label>
+        <label>
+            <input name="fragment" value="" type="radio" checked />
+            <span>All</span>
+        </label>
+        <label>
+            <input name="fragment" value="true" type="radio" />
+            <span>Fragments</span>
+        </label>
+        <label>
+            <input name="fragment" value="false" type="radio" />
+            <span>Complete</span>
+        </label>
+    </form>
+    <form>
+        <label>Taxonomic origin</label>
+        <label>
+            <input name="origin" value="merged" type="radio" checked />
+            <span>All (merged)</span>
+        </label>
+        <label>
+            <input name="origin" value="stacked" type="radio" />
+            <span>All (stacked)</span>
+        </label>
+        <label>
+            <input name="origin" value="arch" type="radio" />
+            <span>Archaea</span>
+        </label>
+        <label>
+            <input name="origin" value="bact" type="radio" />
+            <span>Bacteria</span>
+        </label>
+        <label>
+            <input name="origin" value="euk" type="radio" />
+            <span>Eukaryotes</span>
+        </label>
+        <label>
+            <input name="origin" value="others" type="radio" />
+            <span>Others</span>
+        </label>
+    </form>
+    <div id="distribution"></div>
+
+    <h2>Key species</h2>
+    <div id="species-cards">
+        <div class="row">
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="3702">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-brassica"></i></p>
+                            <span>A. thaliana</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="6239">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-c-elegans"></i></p>
+                            <span>C. elegans </span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="7955">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-zebrafish"></i></p>
+                            <span>D. rerio</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="7227">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-fly"></i></p>
+                            <span>D. melanogaster </span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="83333">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-ecoli"></i></p>
+                            <span>E. coli</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="9606">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-human"></i></p>
+                            <span>H. sapiens</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="10090">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-mouse"></i></p>
+                            <span>M. musculus</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="39947">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-rice"></i></p>
+                            <span>O. sativa japonica</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="10116">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-rat"></i></p>
+                            <span>R. norvegicus</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="559292">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-yeast"></i></p>
+                            <span>S. cerevisiae</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="284812">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-yeast"></i></p>
+                            <span>S. pombe</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2">
+                <div class="card">
+                    <div class="card-content center-align" data-taxon-id="4577">
+                        <div class="card-title">
+                            <p><i class="icon icon-species icon-corn"></i></p>
+                            <span>Z. mays</span>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Families</h2>
+    <p>
+        Protein families annotating proteins with an AlphaFold structure.
+        The colored bars represent the distribution of structures grouped by their mean model confidence.<br>
+        Fragmented sequences were not ignored when calculating mean pLDDT scores.
+    </p>
+
+    <table id="entries">
+        <thead>
+            <tr>
+                <th rowspan="2">Accession</th>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Description</th>
+                <th colspan="5">AlphaFold structures</th>
+            </tr>
+            <tr>
+                <th>Count</th>
+                <th><abbr title="Mean sequence pLDDT">seq-pLDDt</abbr></th>
+                <th></th>
+                <th><abbr title="Mean domain pLDDT">dom-pLDDt</abbr></th>
+                <th></th>
+                <th>&delta;</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>Family size versus pLDDT</h3>
+    <p>
+        Number of sequences (with an AlphaFold prediction) and mean pLDDT score per family.
+        The mean pLDDT score is calculated using individual pLDDT scores of residues annotated by the family.<br>
+        Drag out a rectangle to zoom. Click on a point to open the family page.
+    </p>
+    <div id="sequences-vs-score">
+        <p class="center-align">Loading&hellip;</p>
+    </div>
+{% endblock %}
+
+{%  block scripts %}
+    <script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="//code.highcharts.com/10.2/highcharts.js"></script>
+    <script src="//code.highcharts.com/10.2/modules/boost.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}" type="module"></script>
+{% endblock %}

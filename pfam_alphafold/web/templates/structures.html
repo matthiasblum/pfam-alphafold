@@ -1,0 +1,114 @@
+{% extends "default.html" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+{% endblock %}
+
+{% block content %}
+    <h2 id="header">AlphaFold structures</h2>
+    <p>
+        Search for structure predictions using the filter below.
+    </p>
+    <form>
+        <label>Sequence status</label>
+        <label>
+            <input name="fragment" value="" type="radio" checked />
+            <span>All</span>
+        </label>
+        <label>
+            <input name="fragment" value="true" type="radio" />
+            <span>Fragments</span>
+        </label>
+        <label>
+            <input name="fragment" value="false" type="radio" />
+            <span>Complete</span>
+        </label>
+    </form>
+
+    <form>
+        <label>Taxonomic origin</label>
+        <label>
+            <input name="origin" value="merged" type="radio" checked />
+            <span>All</span>
+        </label>
+        <label>
+            <input name="origin" value="arch" type="radio" />
+            <span>Archaea</span>
+        </label>
+        <label>
+            <input name="origin" value="bact" type="radio" />
+            <span>Bacteria</span>
+        </label>
+        <label>
+            <input name="origin" value="euk" type="radio" />
+            <span>Eukaryotes</span>
+        </label>
+        <label>
+            <input name="origin" value="others" type="radio" />
+            <span>Others</span>
+        </label>
+    </form>
+
+    <form>
+        <label>In Pfam</label>
+        <label>
+            <input name="entries" value="" type="radio" checked />
+            <span>Any</span>
+        </label>
+        <label>
+            <input name="entries" value="true" type="radio" />
+            <span>Yes</span>
+        </label>
+        <label>
+            <input name="entries" value="false" type="radio" />
+            <span>No</span>
+        </label>
+    </form>
+
+    <input name="taxon" value="" type="hidden">
+
+    <form action="#">
+        <label>
+            Mean sequence pLDDT
+        </label>
+        <span class="help">
+            Set to <code>-1</code> to disable
+        </span>
+        <label>
+            <div class="range-field">
+                <input type="range" name="score" min="-1" max="100" />
+            </div>
+        </label>
+
+    </form>
+
+    <table id="structures">
+        <thead>
+            <tr>
+                <th>Accession</th>
+                <th>Status</th>
+                <th>Sequence</th>
+                <th>Length</th>
+                <th>Organism</th>
+                <th>Mean sequence pLDDT</th>
+                <th>In Pfam?</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>Length versus pLDDT</h3>
+    <p>
+        <button id="length-vs-score-btn" class="btn">Display</button> the sequence mean pLDDT of structures against their sequence length.
+    </p>
+    <div id="length-vs-score-chart"></div>
+{% endblock %}
+
+{%  block scripts %}
+    <script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="//code.highcharts.com/10.2/highcharts.js"></script>
+    <script src="//code.highcharts.com/10.2/modules/boost.js"></script>
+    <script src="{{ url_for('static', filename='structures.js') }}" type="module"></script>
+{% endblock %}
+
