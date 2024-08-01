@@ -29,8 +29,8 @@ def extract(indir: str, output: str, processes: int = 1, version: int = 4):
         p.start()
         workers.append(p)
 
-    path = os.path.join(indir, f"proteome-tax_id-*_v{version}.tar")
-    for file in glob.iglob(path):
+    path = os.path.join(indir, "**", f"proteome-tax_id-*_v{version}.tar")
+    for file in glob.iglob(path, recursive=True):
         inqueue.put(file)
 
     for _ in workers:
