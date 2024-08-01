@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
    name="pfam-alphafold",
-   version="1.0.0",
+   version="1.0.1",
    author="Matthias Blum",
    author_email="mblum@ebi.ac.uk",
    description="Build a SQLite3 database incorporating Pfam families and "
